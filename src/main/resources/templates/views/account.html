@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security5"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+<title>Account Page</title>
+</head>
+<body>
+
+	<div layout:fragment="content" style="text-align: center; margin-top: 30px">
+			<h3 >Hi, </h3> <h3 th:text="${user.name}"/>
+				<p th:text="${result.text}" style="text-align: left"></p>
+	</div>
+</body>
+</html>
