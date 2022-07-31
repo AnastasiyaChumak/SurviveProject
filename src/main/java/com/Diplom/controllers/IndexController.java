@@ -9,7 +9,7 @@ public class IndexController {
 	public String showIndexPage() {
 		return "views/index";
 	}
-	
+
 	@GetMapping("/index")
 	public String indexPage() {
 		return "views/index";

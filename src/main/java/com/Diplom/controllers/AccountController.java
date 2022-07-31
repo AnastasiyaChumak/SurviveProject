@@ -14,13 +14,13 @@ import com.Diplom.services.UserService;
 
 @Controller
 public class AccountController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private LogUserService logService;
-	
+
 	@Autowired
 	private ResultService service;
 
@@ -32,9 +32,8 @@ public class AccountController {
 		System.out.println(user.getEmail());
 		System.out.println(user.getResult());
 		Result result = service.findByRes(user.getResult());
-		model.addAttribute("result", result); 
+		model.addAttribute("result", result);
 		return "views/account";
 	}
-	
-	 
+
 }

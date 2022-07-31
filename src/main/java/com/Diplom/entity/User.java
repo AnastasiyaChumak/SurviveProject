@@ -19,7 +19,6 @@ public class User {
 	private String email;
 	private String name;
 	private Integer result;
-	private String password;
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "role")
@@ -73,14 +72,6 @@ public class User {
 
 	public void setResult(Integer result) {
 		this.result = result;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 }

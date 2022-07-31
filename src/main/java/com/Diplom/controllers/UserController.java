@@ -1,12 +1,12 @@
 package com.Diplom.controllers;
 
-import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,17 +21,20 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/users")
-	public String listUsers(Model model, @RequestParam(defaultValue = "") String name, HttpSession session) {
+	public String listUsers(Model model, @RequestParam(defaultValue = "") String name) {
 		model.addAttribute("users", userService.findByNameSearch(name));
 		return "views/users";
 	}
-	
-	@PostMapping("/setAdmin")
-	public String setUserAdmin(Model model, BindingResult bindingResult, HttpSession session) {
-		model.addAttribute("users", userService.findAll());
-		String email = (String) session.getAttribute("email");
-		User user = userService.findByEmail(email);
-		user.setRole(Role.ADMIN);
+
+	@PostMapping("/changeRole/{id}")
+	public String setUserAdmin(@PathVariable(value = "id") Integer id, @Valid User user) {
+		User oldUser = userService.findById(id);
+		if (oldUser.getRole().equals(Role.USER)) {
+			oldUser.setRole(Role.ADMIN);
+		} else if (oldUser.getRole().equals(Role.ADMIN)) {
+			oldUser.setRole(Role.USER);
+		}
+		userService.saveUser(oldUser);
 		return "redirect:/users";
 
 	}

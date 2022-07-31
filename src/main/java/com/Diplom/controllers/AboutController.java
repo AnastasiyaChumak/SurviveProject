@@ -10,7 +10,7 @@ public class AboutController {
 	public String showAboutPage() {
 		return "views/about";
 	}
-	
+
 	@PostMapping("/about")
 	public String aboutPage() {
 		return "views/about";

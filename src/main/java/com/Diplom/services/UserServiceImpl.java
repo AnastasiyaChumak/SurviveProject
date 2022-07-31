@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import javax.validation.ValidationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.Diplom.entity.Role;
@@ -29,9 +28,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void createUser(User user) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		user.setPassword(encoder.encode(user.getPassword()));
-		user.setPassword("1111");
 		user.setRole(Role.USER);
 		user.setResult(10);
 		userRepository.save(user);
@@ -41,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	public boolean isUserPresent(String email) {
 		return false;
 	}
-	
+
 	@Override
 	public User findByName(String name) {
 		return userRepository.findByName(name);
@@ -73,7 +69,6 @@ public class UserServiceImpl implements UserService {
 		User newUser = new User();
 		newUser.setName((String) attributes.get("given_name"));
 		newUser.setEmail((String) attributes.get("email"));
-		newUser.setPassword("1111");
 		newUser.setRole(Role.ADMIN);
 		newUser.setResult(0);
 		return userRepository.save(newUser);
@@ -86,8 +81,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findById(String id) {
-		return userRepository.findById(id);
+	public User findById(Integer id) {
+		return userRepository.findById(id).orElse(new User());
 	}
 
 }

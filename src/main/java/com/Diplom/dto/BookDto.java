@@ -8,9 +8,9 @@ public class BookDto {
 	private String description;
 	private String link;
 
-	private Map<String, Object> attributes;
+	private Map<Integer, Object> attributes;
 
-	public BookDto(Map<String, Object> attributes) {
+	public BookDto(Map<Integer, Object> attributes) {
 		this.attributes = attributes;
 	}
 

@@ -7,7 +7,7 @@ import com.Diplom.entity.Answer;
 
 public interface AnswerService {
 	public List<Answer> findAll();
-	
+
 	public Optional<Answer> findById(String answerId);
-	 
+
 }

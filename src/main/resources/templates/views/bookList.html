@@ -4,14 +4,14 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	layout:decorate="~{fragments/main_layout}">
 <head>
-<title>Add book Page</title>
+<title>Books</title>
 </head>
 <body>
-
 	<div layout:fragment="content" class="container mySpace">
-	<h3 style="margin-bottom: 20px">Here you can read books about survival that may be of interest to you.</h3>
+		<h3 style="margin-bottom: 20px">Here you can read books about
+			survival that may be of interest to you.</h3>
 		<form action="/bookList" class="form-inline">
-			<div class="form-group mb-2" >
+			<div class="form-group mb-2">
 				<input type="text" class="form-control" name="name"
 					placeholder="Search book" /> <input type="submit" value="Search"
 					class="btn btn-primary" />
@@ -19,12 +19,26 @@
 		</form>
 		<div class="card">
 			<div class="card card-body">
-				<ul th:each="books:${book}" style="list-style: none; padding-left: 10px;">
+				<ul th:each="books:${book}"
+					style="list-style: none; padding-left: 10px;">
 					<li><b>Topic:</b> <span th:text="${books.topic}"></span></li>
-					<li><b>Description:</b><p th:text="${books.description}"></p></li>
+					<li><b>Description:</b>
+						<p th:text="${books.description}"></p></li>
 					<li><b>Link:</b> <span th:text="${books.link}"></span></li>
 					<br>
-					<button class="btn btn-primary" th:href="'/bookList/' + ${books.id} + '/bookUpdate'">Edit</button>
+					<form class="form-inline my-2 my-lg-0"
+						th:action="@{'/bookUpdate/'+${books.id}}" th:object="${books}"
+						method="get">
+						<input class="form-control mr-sm-2" type="hidden" />
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit">Edit</button>
+					</form>
+					<br>
+					<form class="form-inline my-2 my-lg-0"
+						th:action="@{/bookDelete/{id}(id=${books.id})}"
+						th:object="${books}" method="post">
+						<input class="form-control mr-sm-2" type="hidden" />
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit">Delete</button>
+					</form>
 					<hr>
 				</ul>
 			</div>

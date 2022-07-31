@@ -27,5 +27,5 @@ public class AnswerServiceImpl implements AnswerService {
 			return Optional.of(new Answer());
 		}
 	}
-	
+
 }

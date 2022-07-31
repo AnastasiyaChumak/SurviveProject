@@ -5,14 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Diplom.services.BookService;
 
 @Controller
 public class BookController {
-	
+
 	@Autowired
 	private BookService service;
 
@@ -21,24 +20,11 @@ public class BookController {
 		model.addAttribute("book", service.findByTopicSearch(topic));
 		return "views/bookList";
 	}
-	
+
 	@GetMapping("/bookUpdate/{id}")
-	public String bookListUpdate(@PathVariable (value = "id") Integer id, Model model) {
+	public String bookListUpdate(@PathVariable(value = "id") Integer id, Model model) {
 		model.addAttribute("book", service.findById(id));
-	    return "views/bookUpdate";
+		return "bookUpdate";
 	}
-	
-	/*@GetMapping("/edit/{id}")
-    public String editPage(Model model, @PathVariable("id") int id) {
-        tempId = id;
-        model.addAttribute("film", new Film());
-        return "edit_films";
-    }
- 
-    @PostMapping("/edit")
-    public String editFilm(@ModelAttribute("film") Film film) {
-        film.setId(tempId);
-        filmService.edit(film);
-        return "redirect:/";
-    }*/
+
 }

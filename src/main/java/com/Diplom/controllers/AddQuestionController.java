@@ -12,7 +12,7 @@ import com.Diplom.dto.BookDto;
 import com.Diplom.dto.QuestionDto;
 
 @Controller
-public class addQuestionController {
+public class AddQuestionController {
 
 	@GetMapping("/addQuestion")
 	public String registerForm(Model model) {

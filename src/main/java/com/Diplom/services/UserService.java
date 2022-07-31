@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import com.Diplom.entity.User;
 
-public interface UserService { 
+public interface UserService {
 
 	public List<User> findAll();
 
@@ -25,11 +25,9 @@ public interface UserService {
 	public Optional<User> findUserByEmail(String string);
 
 	public User findByEmail(String name);
-	
-	public User findById(String id);
+
+	public User findById(Integer id);
 
 	public List<User> findByNameSearch(String name);
-	
-	
 
 }

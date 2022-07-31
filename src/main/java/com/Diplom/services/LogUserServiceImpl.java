@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Diplom.entity.LogUser;
-import com.Diplom.entity.Role;
-import com.Diplom.entity.User;
 import com.Diplom.repositories.LogUserRepository;
 
 @Service
@@ -39,15 +37,15 @@ public class LogUserServiceImpl implements LogUserService {
 		newUser.setId(1);
 		return repo.save(newUser);
 	}
-	
+
 	public void saveLogUser(LogUser user) throws ValidationException {
 		repo.save(user);
 	}
-	
+
 	public void deleteLogUser() throws ValidationException {
 		repo.deleteAll();
 	}
-	
+
 	@Override
 	public Optional<LogUser> findUserByEmail(String string) {
 		return repo.findByEmail(string);

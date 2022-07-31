@@ -1,7 +1,6 @@
 package com.Diplom.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +25,5 @@ public class QuestionServiceImpl implements QuestionService {
 	public List<Question> findByWeather(String weather) {
 		return questionRepository.findAllByWeather(weather);
 	}
-	
 
 }

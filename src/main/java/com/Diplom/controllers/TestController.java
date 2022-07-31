@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Diplom.entity.Answer;
-import com.Diplom.entity.LogUser;	
+import com.Diplom.entity.LogUser;
 import com.Diplom.entity.Question;
 import com.Diplom.entity.User;
 import com.Diplom.services.AnswerService;

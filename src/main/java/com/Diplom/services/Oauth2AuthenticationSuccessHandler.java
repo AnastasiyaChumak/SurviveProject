@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -33,7 +32,7 @@ public class Oauth2AuthenticationSuccessHandler implements AuthenticationSuccess
 
 	@Autowired
 	private LogUserService logService;
-	
+
 	@Autowired
 	private LogUserRepository repo;
 
