@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+<title>Book Form Update</title>
+<base href="/">
+<link rel="stylesheet" href="../../static/css/style.css"
+	th:href="@{css/style.css}" />
+
+<link rel="stylesheet" href="../../static/css/materia/bootstrap.min.css"
+	th:href="@{css/materia/bootstrap.min.css}" />
+<script type="text/javascript" th:src="@{scripts/jquery-3.2.1.min.js}"></script>
+</head>
+<body>
+	<div layout:fragment="content" class="container mySpace">
+		<form th:action="@{/bookUpdate/__${book.id}__}" th:object="${book.id}"
+			method="post">
+			<div class="form-group">
+				<label for="topic" class="form-control-label">Topic</label> <input
+					type="text" class="form-control" th:field="${book.topic}"
+					id="topic" />
+			</div>
+
+			<div class="form-group">
+				<label for="description" class="form-control-label">Description</label>
+				<textarea class="form-control" th:field="${book.description}"
+					id="description" style="height: 95px"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="link" class="form-control-label">Link</label> <input
+					type="text" class="form-control" th:field="${book.link}" id="link" />
+			</div>
+
+			<input type="submit" value="Submit" class="btn btn-primary" />
+		</form>
+	</div>
+</body>
+</html>
